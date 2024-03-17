@@ -37,3 +37,6 @@ next-env.d.ts
 
 #.env file
 .env
+
+#dev-only DB files
+dev.db*

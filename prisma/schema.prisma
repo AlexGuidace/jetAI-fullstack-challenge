@@ -9,3 +9,16 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Jet {
+   id String @id @default(uuid())
+   name String
+   wingspan String
+   engine String
+   year String
+   topSpeed String
+   fuelEfficiency String
+   maxSeats String
+   isSelected Boolean
+   createdAt DateTime @default(now())
+}
