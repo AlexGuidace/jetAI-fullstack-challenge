@@ -1,7 +1,6 @@
 // This file creates a singleton instance of Prisma for development mode: [Prisma singleton instance documentation](https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices).
 
 import { PrismaClient } from '@prisma/client';
-import importCsvToDb from '../utils/importCsv';
 
 const prismaClientSingleton = () => {
   return new PrismaClient({ log: ['query'] });

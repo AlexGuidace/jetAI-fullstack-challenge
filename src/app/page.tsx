@@ -1,7 +1,18 @@
-import prisma from '../db';
+import prisma from '@/db';
+import Heading from '@/components/Heading';
 
 export default async function Homepage() {
   const jets = await prisma.jet.findMany();
   console.log(jets);
-  return <h1>Jets Homepage</h1>;
+
+  return (
+    <>
+      <Heading title='AI-Powered Jet Comparison Tool' fontSize='text-3xl' />
+      <Heading title='Top 10 Charter Jets' fontSize='text-xl' />
+      {/* static table component for displaying imported CSV data with checkboxes */}
+      {/* user form component for selecting and submitting attributes */}
+      <Heading title='Comparison Results' fontSize='text-xl'/>
+      {/* dynamic table component for sorting and comparing OpenAI API jet data results */}
+    </>
+  );
 }
