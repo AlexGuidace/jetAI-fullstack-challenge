@@ -1,7 +1,4 @@
-interface Heading {
-  title: string;
-  fontSize: string;
-}
+import { Heading } from '../types/interfaces'
 
 const Heading: React.FC<Heading> = ({ title, fontSize }): JSX.Element => {
   return (

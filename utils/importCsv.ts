@@ -1,9 +1,9 @@
+const { PrismaClient } = require('@prisma/client');
 const fs = require('fs');
 const csvParser = require('csv-parser');
-const { PrismaClient } = require('@prisma/client');
 
 // Create interface to ensure objects being created in the DB adhere to the Jet Prisma model.
-interface JetCsvRow {
+interface Jet {
   name: string;
   wingspan: string;
   engines: string;
@@ -21,7 +21,7 @@ const importCsvToDb = async (filePath: string): Promise<void> => {
       const parsedCsvData = fs.createReadStream(filePath).pipe(csvParser());
 
       for await (const row of parsedCsvData) {
-        const rowObject: JetCsvRow = {
+        const rowObject: Jet = {
           name: row.name,
           wingspan: row.wingspan,
           engines: row.engines,
