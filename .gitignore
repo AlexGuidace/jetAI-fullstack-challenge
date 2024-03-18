@@ -38,5 +38,8 @@ next-env.d.ts
 #.env file
 .env
 
-#dev-only DB files
+# dev-only DB files
 dev.db*
+
+# generated files
+importCsv.js
