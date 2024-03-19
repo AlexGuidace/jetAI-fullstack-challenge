@@ -2,10 +2,7 @@ import prisma from '@/db';
 import Heading from '@/components/Heading';
 import JetsTable from '@/components/JetsTable';
 
-export default async function Homepage() {
-  const jets = await prisma.jet.findMany();
-  console.log(jets);
-
+const Homepage = async (): Promise<JSX.Element> => {
   return (
     <>
       <Heading
@@ -31,4 +28,6 @@ export default async function Homepage() {
       </div>
     </>
   );
-}
+};
+
+export default Homepage;
