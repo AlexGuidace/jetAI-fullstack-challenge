@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+thead th {
+   padding: 1rem 2rem;
+   border-bottom: 1px solid;
+   text-align: left; 
+}
+
+tbody td {
+   padding: 1rem 2rem;
+   border-bottom: 1px solid; 
+}

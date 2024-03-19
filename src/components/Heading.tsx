@@ -1,8 +1,8 @@
 import { Heading } from '../types/interfaces'
 
-const Heading: React.FC<Heading> = ({ title, fontSize }): JSX.Element => {
+const Heading: React.FC<Heading> = ({ title, fontSize, alignment }): JSX.Element => {
   return (
-    <h1 className={`${fontSize} text-center text-stone-600 font-bold mt-6`}>
+    <h1 className={`${fontSize} ${alignment} text-stone-600 font-bold mt-6`}>
       {title}
     </h1>
   );

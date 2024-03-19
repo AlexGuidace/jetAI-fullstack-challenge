@@ -8,4 +8,5 @@ export interface Jet {
 export interface Heading {
   title: string;
   fontSize: string;
+  alignment: string;
 }
