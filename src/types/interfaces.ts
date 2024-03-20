@@ -1,8 +1,13 @@
 export interface Jet {
+  id: string;
   name: string;
   wingspan: string;
   engines: string;
   year: string;
+}
+
+export interface Jets {
+  jets: Jet[];
 }
 
 export interface Heading {

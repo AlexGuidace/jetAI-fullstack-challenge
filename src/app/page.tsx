@@ -1,8 +1,11 @@
-import prisma from '@/db';
 import Heading from '@/components/Heading';
 import JetsTable from '@/components/JetsTable';
+import { getJetsFromDb } from './api/crudOps';
 
 const Homepage = async (): Promise<JSX.Element> => {
+  // Get all jets and pass them to the JetsTable.
+  const jets = await getJetsFromDb();
+
   return (
     <>
       <Heading
@@ -17,7 +20,7 @@ const Homepage = async (): Promise<JSX.Element> => {
           alignment="text-left"
         />
         {/* static table component for displaying imported CSV data with checkboxes */}
-        <JetsTable />
+        <JetsTable jets={jets} />
         {/* user form component for selecting and submitting attributes */}
         <Heading
           title="Comparison Results"
