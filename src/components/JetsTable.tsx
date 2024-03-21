@@ -102,13 +102,13 @@ const JetsTable: React.FC<Jets> = ({ jets }) => {
         <tbody>{tableRows}</tbody>
       </table>
       {/* Selected Jets Comparison Form */}
-      <form className="flex-col space-x-4 py-4">
+      <form className="flex-col py-4">
         <div className="relative h-10 w-72 min-w-[200px] my-4">
           <select
             id="selected"
             value={selectedSearchTerm}
             onChange={handleSearchTermChange}
-            className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+            className="peer h-full w-full rounded-[7px] border-2 border-neutral-500 border-t-transparent bg-transparent px-3 py-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
           >
             <option value="Top Speed">Top Speed</option>
             <option value="Fuel Efficiency">Fuel Efficiency</option>
@@ -121,7 +121,7 @@ const JetsTable: React.FC<Jets> = ({ jets }) => {
         <button
           type="submit"
           onClick={handleComparisonFormSubmit}
-          className="px-1 py-1 border-2"
+          className="px-1 py-1 border-2 border-neutral-500 rounded-[7px]"
         >
           Compare Selected Jets
         </button>
