@@ -92,7 +92,9 @@ const JetsTable: React.FC<Jets> = ({ jets }) => {
           <tr>
             <th>Select</th>
             <th>Name</th>
-            <th>Wingspan (ft)</th>
+            <th>
+              Wingspan (ft) <i className="fas fa-caret-down"></i>
+            </th>
             <th>Number of Engines</th>
             <th>Manufacturing Year</th>
           </tr>
