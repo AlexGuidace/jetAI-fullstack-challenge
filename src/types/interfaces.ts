@@ -10,6 +10,11 @@ export interface Jets {
   jets: Jet[];
 }
 
+export interface JetNameAndYear {
+  name: string;
+  year: string;
+}
+
 export interface Heading {
   title: string;
   fontSize: string;

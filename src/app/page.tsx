@@ -19,7 +19,6 @@ const Homepage = async (): Promise<JSX.Element> => {
           fontSize="text-xl"
           alignment="text-left"
         />
-        {/* static table component for displaying imported CSV data with checkboxes */}
         <JetsTable jets={jets} />
         {/* user form component for selecting and submitting attributes */}
         <Heading
