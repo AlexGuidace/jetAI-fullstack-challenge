@@ -16,10 +16,10 @@ export interface JetNameAndYear {
 }
 
 export interface GeminiAnswersArray {
-   name: string;
-   jetAttribute: number;
-   units: string;
- }
+  name: string;
+  jetAttribute: number;
+  units: string;
+}
 
 export interface Heading {
   title: string;
