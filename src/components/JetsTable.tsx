@@ -3,14 +3,14 @@
 import { useState, ChangeEvent } from 'react';
 import '../app/globals.css';
 import { Jets } from '@/types/interfaces';
-import { getInfoFromGemini } from '@/app/api/geminiApiOps';
+import { getComparisonDataFromGemini } from '@/app/api/geminiApiOps';
 import { JetNameAndYear } from '@/types/interfaces';
 
 const JetsTable: React.FC<Jets> = ({ jets }) => {
   const [checkedJetsArray, setCheckedJetsArray] = useState<JetNameAndYear[]>([
     { name: '', year: '' },
   ]);
-  const [selectedSearchTerm, setSelectedSearchTerm] =
+  const [selectedComparisonTerm, setSelectedComparisonTerm] =
     useState<string>('Top Speed');
 
   console.log('initial checkedJetsArray:', checkedJetsArray);
@@ -37,7 +37,7 @@ const JetsTable: React.FC<Jets> = ({ jets }) => {
 
   //  Sets selected search term to be used in Gemini AI.
   const handleSearchTermChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedSearchTerm(event.target.value);
+    setSelectedComparisonTerm(event.target.value);
   };
 
   //  Sends checkedJetsArray and selectedSearchTerm to Gemini AI function, so Gemini can fetch information regarding jets the user checked.
@@ -55,13 +55,9 @@ const JetsTable: React.FC<Jets> = ({ jets }) => {
       return;
     }
 
-    const geminiAnswersArray = await getInfoFromGemini(
+    const geminiAnswersArray = await getComparisonDataFromGemini(
       checkedJetsArray,
-      selectedSearchTerm
-    );
-
-    console.log(
-      `ANSWERS ARRAY FROM GEMINI INSIDE JETS TABLE: ${geminiAnswersArray}`
+      selectedComparisonTerm
     );
 
     return geminiAnswersArray;
@@ -106,7 +102,7 @@ const JetsTable: React.FC<Jets> = ({ jets }) => {
         <div className="relative h-10 w-72 min-w-[200px] my-4">
           <select
             id="selected"
-            value={selectedSearchTerm}
+            value={selectedComparisonTerm}
             onChange={handleSearchTermChange}
             className="peer h-full w-full rounded-[7px] border-2 border-neutral-500 border-t-transparent bg-transparent px-3 py-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
           >
