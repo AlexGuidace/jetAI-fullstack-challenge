@@ -2,18 +2,23 @@
 
 import { useState, ChangeEvent } from 'react';
 import '../app/globals.css';
-import { Jets } from '@/types/interfaces';
+import ComparisonTable from './ComparisonTable';
 import { getComparisonDataFromGemini } from '@/app/api/geminiApiOps';
+import { Jets } from '@/types/interfaces';
 import { JetNameAndYear } from '@/types/interfaces';
+import { GeminiAnswer } from '@/types/interfaces';
 
-const JetsTable: React.FC<Jets> = ({ jets }) => {
+const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
   const [checkedJetsArray, setCheckedJetsArray] = useState<JetNameAndYear[]>([
     { name: '', year: '' },
   ]);
   const [selectedComparisonTerm, setSelectedComparisonTerm] =
     useState<string>('Top Speed');
+  const [geminiAnswersArray, setGeminiAnswersArray] = useState<GeminiAnswer[]>([
+    { name: '', jetAttribute: 0, units: '' },
+  ]);
 
-  console.log('initial checkedJetsArray:', checkedJetsArray);
+  console.log('Initial checkedJetsArray:', checkedJetsArray);
 
   // Called when a JetTable's row's checkbox is clicked. It adds or removes a Jet name and its manufacturing year from an array.
   const handleCheckedJetRowChange = (passedName: string, year: string) => {
@@ -55,12 +60,13 @@ const JetsTable: React.FC<Jets> = ({ jets }) => {
       return;
     }
 
+    //  Get answers about selected jets from Gemini.
     const geminiAnswersArray = await getComparisonDataFromGemini(
       checkedJetsArray,
       selectedComparisonTerm
     );
-
-    return geminiAnswersArray;
+    // Assign returned jet data to useState array for comparison sorting and ranking.
+    setGeminiAnswersArray(geminiAnswersArray);
   };
 
   const tableRows = jets.map((row) => (
@@ -122,8 +128,9 @@ const JetsTable: React.FC<Jets> = ({ jets }) => {
           Compare Selected Jets
         </button>
       </form>
+      
     </>
   );
 };
 
-export default JetsTable;
+export default JetsDataInterface;
