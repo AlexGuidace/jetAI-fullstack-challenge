@@ -1,6 +1,6 @@
 import genAI from '../../../utils/geminiConfig';
 import { JetNameAndYear } from '@/types/interfaces';
-import { GeminiAnswersArray } from '@/types/interfaces';
+import { GeminiAnswer } from '@/types/interfaces';
 
 const MODEL_NAME = 'gemini-1.0-pro';
 const model = genAI.getGenerativeModel({ model: MODEL_NAME });
@@ -8,7 +8,7 @@ const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 export const getComparisonDataFromGemini = async (
   checkedJetsArray: JetNameAndYear[],
   selectedComparisonTerm: string
-): Promise<GeminiAnswersArray[]> => {
+): Promise<GeminiAnswer[]> => {
   // Remove initial object used for useState() in JetsTable component.
   if (checkedJetsArray[0].name === '') {
     checkedJetsArray.shift();
@@ -53,6 +53,7 @@ export const getComparisonDataFromGemini = async (
 
         prompt += `${jetIteration}. ${maxSeatsQuery} \n\n`;
       default:
+        // TODO: This is triggered when the unchecking-but-check-still-remains issue occurs in the Jets Table.
         console.log(
           'Something went wrong while concatenating queries to original Gemini prompt.'
         );
@@ -72,8 +73,7 @@ export const getComparisonDataFromGemini = async (
     );
 
     //  Parse the returned string response into an actual array.
-    const geminiAnswersArray: GeminiAnswersArray[] =
-      JSON.parse(geminiAnswersText);
+    const geminiAnswersArray: GeminiAnswer[] = JSON.parse(geminiAnswersText);
     console.log(
       'geminiAnswersArray............................:',
       geminiAnswersArray

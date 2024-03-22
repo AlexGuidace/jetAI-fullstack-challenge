@@ -15,7 +15,7 @@ export interface JetNameAndYear {
   year: string;
 }
 
-export interface GeminiAnswersArray {
+export interface GeminiAnswer {
   name: string;
   jetAttribute: number;
   units: string;
