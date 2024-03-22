@@ -35,20 +35,28 @@ export const getComparisonDataFromGemini = async (
   checkedJetsArray.forEach((jet) => {
     jetIteration++;
 
-    if (searchTerm === 'top speed') {
-      const topSpeedQuery = `What is the ${searchTerm}/max speed in mach units for the ${jet.name} manufactured in ${jet.year}, as provided by the ${jet.name} website? Round the max speed to the nearest hundredth decimal place.`;
+    switch (searchTerm) {
+      case 'top speed':
+        const topSpeedQuery = `What is the ${searchTerm}/max speed in mach units for the ${jet.name} manufactured in ${jet.year}, as provided by the ${jet.name} website? Round the max speed to the nearest hundredth decimal place.`;
 
-      prompt += `${jetIteration}. ${topSpeedQuery} \n\n`;
-    } else if (searchTerm === 'fuel efficiency') {
-      // TODO: Gemini is giving me wildly different values on each request for "fuel efficieny" based on this prompt.
-      const fuelEfficiencyQuery = `What is the ${searchTerm} in nm/gal units for a ${jet.name} manufactured in ${jet.year}, that has a typical cruise speed of 450 knots and full payload, based on ${jet.name} documentation?`;
+        prompt += `${jetIteration}. ${topSpeedQuery} \n\n`;
+        break;
+      case 'fuel efficiency':
+        // TODO: Gemini is giving me wildly different values on each request for "fuel efficieny" based on this prompt.
+        const fuelEfficiencyQuery = `What is the ${searchTerm} in nm/gal units for a ${jet.name} manufactured in ${jet.year}, that has a typical cruise speed of 450 knots and full payload, based on ${jet.name} documentation?`;
 
-      prompt += `${jetIteration}. ${fuelEfficiencyQuery} \n\n`;
-    } else if (searchTerm === 'maximum seats') {
-      // TODO: Gemini is giving me different values (off by one seat) based on this prompt.
-      const maxSeatsQuery = `What are the ${searchTerm} on a ${jet.name} manufactured in ${jet.year}, as provided by the ${jet.name} website?`;
+        prompt += `${jetIteration}. ${fuelEfficiencyQuery} \n\n`;
+        break;
+      case 'maximum seats':
+        // TODO: Gemini is giving me different values (off by one seat) based on this prompt.
+        const maxSeatsQuery = `What are the ${searchTerm} on a ${jet.name} manufactured in ${jet.year}, as provided by the ${jet.name} website?`;
 
-      prompt += `${jetIteration}. ${maxSeatsQuery} \n\n`;
+        prompt += `${jetIteration}. ${maxSeatsQuery} \n\n`;
+      default:
+        console.log(
+          'Something went wrong while concatenating queries to original Gemini prompt.'
+        );
+        break;
     }
   });
 
