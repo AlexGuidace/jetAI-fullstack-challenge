@@ -1,4 +1,3 @@
-import { match } from 'assert';
 import genAI from '../../../utils/geminiConfig';
 import { JetNameAndYear } from '@/types/interfaces';
 import { GeminiAnswersArray } from '@/types/interfaces';
