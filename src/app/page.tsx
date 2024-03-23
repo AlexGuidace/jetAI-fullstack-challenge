@@ -1,6 +1,6 @@
 import { getJetsFromDb } from './api/crudOps';
 import Heading from '@/components/Heading';
-import JetsDataInterface from '@/components/JetsDataInterface';
+import JetsDataUserInterface from '@/components/JetsDataUserInterface';
 
 const Homepage = async (): Promise<JSX.Element> => {
   // Get all jets and pass them to the JetsTable.
@@ -19,7 +19,7 @@ const Homepage = async (): Promise<JSX.Element> => {
           fontSize="text-xl"
           alignment="text-left"
         />
-        <JetsDataInterface jets={jets} />
+        <JetsDataUserInterface jets={jets} />
         <Heading
           title="Comparison Results"
           fontSize="text-xl"

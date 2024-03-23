@@ -8,7 +8,7 @@ import { Jets } from '@/types/interfaces';
 import { JetNameAndYear } from '@/types/interfaces';
 import { GeminiAnswer } from '@/types/interfaces';
 
-const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
+const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
   const [checkedJetsArray, setCheckedJetsArray] = useState<JetNameAndYear[]>([
     { name: '', year: '' },
   ]);
@@ -45,7 +45,7 @@ const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
 
   // A function called within handleComparisonFormSubmit for sorting and ranking the jet comparison data returned my Gemini AI.
   const sortGeminiAnswers = (returnedGeminiAnswersArray: GeminiAnswer[]) => {
-    // Sort array from lowest to highest (ascending) for fuel efficiency. Otherwise, sort array from highest to lowest (descending) for top speed and maximum seats.
+    // Sort array from highest to lowest (descending) for top speed in Mach, fuel efficiency in nautical miles per gallon (nm/gal), and maximum seats.
     if (
       returnedGeminiAnswersArray[0].jetAttribute.hasOwnProperty(
         'fuelEfficiency'
@@ -57,7 +57,7 @@ const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
           jetB.jetAttribute?.fuelEfficiency !== undefined
         ) {
           return (
-            jetA.jetAttribute.fuelEfficiency - jetB.jetAttribute.fuelEfficiency
+            jetB.jetAttribute.fuelEfficiency - jetA.jetAttribute.fuelEfficiency
           );
         } else {
           console.error(
@@ -134,6 +134,8 @@ const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
     setGeminiAnswersArray(sortedGeminiAnswersArray);
   };
 
+  console.log('SORTED JETS ARRAY....................: ', geminiAnswersArray);
+
   const tableRows = jets.map((row) => (
     <tr key={row.id}>
       <td>
@@ -197,4 +199,4 @@ const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
   );
 };
 
-export default JetsDataInterface;
+export default JetsDataUserInterface;
