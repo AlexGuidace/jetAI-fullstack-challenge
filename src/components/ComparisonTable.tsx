@@ -14,7 +14,7 @@ const ComparisonTable: React.FC<Jets> = ({ jets }) => {
   const [selectedComparisonTerm, setSelectedComparisonTerm] =
     useState<string>('Top Speed');
   const [geminiAnswersArray, setGeminiAnswersArray] = useState<GeminiAnswer[]>([
-    { name: '', jetAttribute: 0, units: '' },
+    { name: '', jetAttribute: {}, units: '' },
   ]);
 
   console.log('Initial checkedJetsArray:', checkedJetsArray);

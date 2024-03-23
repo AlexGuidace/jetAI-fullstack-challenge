@@ -17,18 +17,14 @@ export const getComparisonDataFromGemini = async (
   // Lowercase the search term to prepare it for prompt.
   const searchTerm = selectedComparisonTerm.toLowerCase();
 
-  console.log('From Gemini function............................:');
-  console.log(
-    `CHECKED JETS............................: ${JSON.stringify(
-      checkedJetsArray
-    )}`
-  );
-  console.log(
-    `SELECTED SEARCH TERM............................: ${searchTerm}`
-  );
-
   // Initial Gemini prompt detailing instructions for answering questions pertaining to each jet passed into this function, and how to format answers.
-  let prompt = `I'd like an answer to each numbered question below. For each question return your answer in this format: a JavaScript object with three camelCased properties, each wrapped in a set of double quotes: name: the jet name--without its year--provided in the query, the numerical value that you've provided for ${searchTerm}, and its units. Put each of these objects into an unlabled array. Give the array back to me in plain text format. \n\n`;
+  let prompt = `I'd like an answer to each numbered question below. For each question return your answer in this format: a JavaScript object with three camelCased properties, each wrapped in a set of double quotes: 
+  
+  - name: the jet name--without its year--provided in the query,
+  - an object called jetAttribute, with a property inside it called ${searchTerm}, in camelCase. This property should have a value of the numerical value that you've provided for ${searchTerm},
+  - The ${searchTerm}'s units
+  
+  Put each of these objects into an unlabled array. Give the array back to me in plain text format. \n\n`;
 
   // Concatenate prompts to initial prompt based on jets and the comparison term passed in, e.g., if the search term passed in was 'top speed', we would concatenate the topSpeedQuery string--populated with a jet's properties--to the initial prompt, for each jet in our checkedJetsArray.
   let jetIteration = 0;
@@ -67,21 +63,9 @@ export const getComparisonDataFromGemini = async (
   try {
     const results = await model.generateContent(prompt);
     const geminiAnswersText = results.response.text();
-    console.log(
-      'geminiAnswersText............................:',
-      geminiAnswersText
-    );
 
     //  Parse the returned string response into an actual array.
     const geminiAnswersArray: GeminiAnswer[] = JSON.parse(geminiAnswersText);
-    console.log(
-      'geminiAnswersArray............................:',
-      geminiAnswersArray
-    );
-    console.log(
-      'geminiAnswersArray length............................:',
-      geminiAnswersArray.length
-    );
 
     return geminiAnswersArray;
   } catch (error) {

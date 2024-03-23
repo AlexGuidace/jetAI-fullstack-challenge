@@ -15,10 +15,8 @@ const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
   const [selectedComparisonTerm, setSelectedComparisonTerm] =
     useState<string>('Top Speed');
   const [geminiAnswersArray, setGeminiAnswersArray] = useState<GeminiAnswer[]>([
-    { name: '', jetAttribute: 0, units: '' },
+    { name: '', jetAttribute: {}, units: '' },
   ]);
-
-  console.log('Initial checkedJetsArray:', checkedJetsArray);
 
   // Called when a JetTable's row's checkbox is clicked. It adds or removes a Jet name and its manufacturing year from an array.
   const handleCheckedJetRowChange = (passedName: string, year: string) => {
@@ -45,7 +43,69 @@ const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
     setSelectedComparisonTerm(event.target.value);
   };
 
-  //  Sends checkedJetsArray and selectedSearchTerm to Gemini AI function, so Gemini can fetch information regarding jets the user checked.
+  // A function called within handleComparisonFormSubmit for sorting and ranking the jet comparison data returned my Gemini AI.
+  const sortGeminiAnswers = (returnedGeminiAnswersArray: GeminiAnswer[]) => {
+    // Sort array from lowest to highest (ascending) for fuel efficiency. Otherwise, sort array from highest to lowest (descending) for top speed and maximum seats.
+    if (
+      returnedGeminiAnswersArray[0].jetAttribute.hasOwnProperty(
+        'fuelEfficiency'
+      )
+    ) {
+      returnedGeminiAnswersArray.sort((jetA, jetB) => {
+        if (
+          jetA.jetAttribute?.fuelEfficiency !== undefined &&
+          jetB.jetAttribute?.fuelEfficiency !== undefined
+        ) {
+          return (
+            jetA.jetAttribute.fuelEfficiency - jetB.jetAttribute.fuelEfficiency
+          );
+        } else {
+          console.error(
+            'No ranking of Gemini answers occurred because a jetAttribute.fuelEfficiency was undefined.'
+          );
+          return 0;
+        }
+      });
+    } else if (
+      returnedGeminiAnswersArray[0].jetAttribute.hasOwnProperty('topSpeed')
+    ) {
+      returnedGeminiAnswersArray.sort((jetA, jetB) => {
+        if (
+          jetA.jetAttribute?.topSpeed !== undefined &&
+          jetB.jetAttribute?.topSpeed !== undefined
+        ) {
+          return jetB.jetAttribute.topSpeed - jetA.jetAttribute.topSpeed;
+        } else {
+          console.error(
+            'No ranking of Gemini answers occurred because a jetAttribute.topSpeed was undefined.'
+          );
+          return 0;
+        }
+      });
+    } else if (
+      returnedGeminiAnswersArray[0].jetAttribute.hasOwnProperty('maximumSeats')
+    ) {
+      returnedGeminiAnswersArray.sort((jetA, jetB) => {
+        if (
+          jetA.jetAttribute?.maximumSeats !== undefined &&
+          jetB.jetAttribute?.maximumSeats !== undefined
+        ) {
+          return (
+            jetB.jetAttribute.maximumSeats - jetA.jetAttribute.maximumSeats
+          );
+        } else {
+          console.error(
+            'No ranking of Gemini answers occurred because a jetAttribute.maximumSeats was undefined.'
+          );
+          return 0;
+        }
+      });
+    }
+
+    return returnedGeminiAnswersArray;
+  };
+
+  //  Sends checkedJetsArray and selectedSearchTerm to Gemini AI function, so Gemini can fetch information regarding jets the user checked and return the results here. Then sort the results.
   const handleComparisonFormSubmit = async (e: {
     preventDefault: () => void;
   }) => {
@@ -60,13 +120,18 @@ const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
       return;
     }
 
-    //  Get answers about selected jets from Gemini.
-    const geminiAnswersArray = await getComparisonDataFromGemini(
+    //  Get array of answers about selected jets from Gemini.
+    const returnedGeminiAnswersArray = await getComparisonDataFromGemini(
       checkedJetsArray,
       selectedComparisonTerm
     );
-    // Assign returned jet data to useState array for comparison sorting and ranking.
-    setGeminiAnswersArray(geminiAnswersArray);
+
+    // Sort that array.
+    const sortedGeminiAnswersArray = sortGeminiAnswers(
+      returnedGeminiAnswersArray
+    );
+
+    setGeminiAnswersArray(sortedGeminiAnswersArray);
   };
 
   const tableRows = jets.map((row) => (
@@ -128,7 +193,6 @@ const JetsDataInterface: React.FC<Jets> = ({ jets }) => {
           Compare Selected Jets
         </button>
       </form>
-      
     </>
   );
 };

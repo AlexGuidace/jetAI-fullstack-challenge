@@ -17,7 +17,11 @@ export interface JetNameAndYear {
 
 export interface GeminiAnswer {
   name: string;
-  jetAttribute: number;
+  jetAttribute: {
+    topSpeed?: number;
+    fuelEfficiency?: number;
+    maximumSeats?: number;
+  };
   units: string;
 }
 
