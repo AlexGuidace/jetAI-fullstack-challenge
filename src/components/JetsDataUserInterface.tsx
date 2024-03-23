@@ -43,7 +43,7 @@ const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
     setSelectedComparisonTerm(event.target.value);
   };
 
-  // A function called within handleComparisonFormSubmit for sorting and ranking the jet comparison data returned my Gemini AI.
+  // A function called within handleComparisonFormSubmit for sorting and ranking the jet comparison data returned by Gemini AI.
   const sortGeminiAnswers = (returnedGeminiAnswersArray: GeminiAnswer[]) => {
     // Sort array from highest to lowest (descending) for top speed in Mach, fuel efficiency in nautical miles per gallon (nm/gal), and maximum seats.
     if (
