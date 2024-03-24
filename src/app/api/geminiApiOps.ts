@@ -22,7 +22,7 @@ export const getComparisonDataFromGemini = async (
   
   - name: the jet name--without its year--provided in the query,
   - an object called jetAttribute, with a property inside it called ${searchTerm}, in camelCase. This property should have a value of the numerical value that you've provided for ${searchTerm},
-  - The ${searchTerm}'s units
+  - A property called units with the ${searchTerm}'s units as the value of that property. The units value for maximum seats is always seats.
   
   Put each of these objects into an unlabled array. Give the array back to me in plain text format. \n\n`;
 
@@ -61,6 +61,7 @@ export const getComparisonDataFromGemini = async (
 
   // With our fully-formed prompt, we make the call to Gemini to generate answers for us.
   try {
+    // TODO: Implement retry logic if this call fails, as it sometimes arbitraily does.
     const results = await model.generateContent(prompt);
     const geminiAnswersText = results.response.text();
 
