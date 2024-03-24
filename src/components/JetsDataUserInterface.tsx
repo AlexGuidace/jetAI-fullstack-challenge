@@ -195,7 +195,7 @@ const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
           Compare Selected Jets
         </button>
       </form>
-      <ComparisonTable geminiAnswersArray={geminiAnswersArray}  />
+      <ComparisonTable geminiAnswersArray={geminiAnswersArray} />
     </>
   );
 };

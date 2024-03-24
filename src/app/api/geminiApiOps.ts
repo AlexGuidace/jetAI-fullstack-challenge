@@ -9,7 +9,7 @@ export const getComparisonDataFromGemini = async (
   checkedJetsArray: JetNameAndYear[],
   selectedComparisonTerm: string
 ): Promise<GeminiAnswer[]> => {
-  // Remove initial object used for useState() in JetsTable component.
+  // Remove initial object used for useState() in JetsDataUserInterface component.
   if (checkedJetsArray[0].name === '') {
     checkedJetsArray.shift();
   }
