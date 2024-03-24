@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import '@fortawesome/fontawesome-free/css/all.css';
 
+table {
+   width: 100%;
+}
+
 thead th {
    padding: 1rem 2rem;
    border-bottom: 1px solid;

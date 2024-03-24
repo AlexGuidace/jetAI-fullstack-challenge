@@ -20,11 +20,6 @@ const Homepage = async (): Promise<JSX.Element> => {
           alignment="text-left"
         />
         <JetsDataUserInterface jets={jets} />
-        <Heading
-          title="Comparison Results"
-          fontSize="text-xl"
-          alignment="text-left"
-        />
       </div>
     </>
   );
