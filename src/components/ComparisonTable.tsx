@@ -66,7 +66,7 @@ const ComparisonTable: React.FC<{ geminiAnswersArray: GeminiAnswer[] }> = ({
         fontSize="text-xl"
         alignment="text-left"
       />
-      <table className="table-auto border-2 border-neutral-500 p-px mt-4 mb-8">
+      <table className="table-auto border border-black p-px mt-4 mb-8">
         <thead>
           <tr>
             <th>Rank</th>
