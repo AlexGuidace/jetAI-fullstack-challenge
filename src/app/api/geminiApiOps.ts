@@ -73,6 +73,9 @@ export const getComparisonDataFromGemini = async (
     return geminiAnswersArray;
   } catch (error) {
     console.error(`An error occurred while querying Gemini AI: ${error}`);
+    alert(
+      `An error occurred while requesting your information from Gemini AI. Please try submitting your request again.`
+    );
     throw error;
   }
 };
