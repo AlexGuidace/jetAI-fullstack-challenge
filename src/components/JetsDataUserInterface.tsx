@@ -186,14 +186,14 @@ const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
       {/* Selected Jets Comparison Form */}
       <form className="flex-col py-4">
         <div className="pb-3">
-          <label className="pr-2">
+          <label htmlFor="select-menu" className="pr-2">
             Ask Gemini AI to Compare Selected Jets By
           </label>
           <select
-            id="selected"
+            id="select-menu"
             value={selectedComparisonTerm}
             onChange={handleSearchTermChange}
-            className="bg-transparent  border border-black rounded-md"
+            className="p-2 bg-transparent border border-black rounded-md"
           >
             <option value="Top Speed">Top Speed</option>
             <option value="Fuel Efficiency">Fuel Efficiency</option>
@@ -204,7 +204,7 @@ const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
           type="submit"
           disabled={isLoading}
           onClick={handleComparisonFormSubmit}
-          className="bg-transparent hover:bg-sky-600 p-2 hover:border-sky-600 hover:text-white border border-black rounded-md"
+          className="bg-transparent p-2 hover:bg-sky-600 hover:border-sky-600 hover:text-white border border-black rounded-md"
         >
           <span>Compare Selected Jets</span>
         </button>
