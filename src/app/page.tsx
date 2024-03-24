@@ -3,7 +3,7 @@ import Heading from '@/components/Heading';
 import JetsDataUserInterface from '@/components/JetsDataUserInterface';
 
 const Homepage = async (): Promise<JSX.Element> => {
-  // Get all jets and pass them to the JetsTable.
+  // Get all jets from DB and pass them to the JetsTable.
   const jets = await getJetsFromDb();
 
   return (

@@ -20,23 +20,23 @@ const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Called when a JetTable's row's checkbox is clicked. It adds or removes a Jet name and its manufacturing year from an array.
-  const handleCheckedJetRowChange = (passedName: string, year: string) => {
-    checkedJetsArray.forEach((jet) => {
-      // If passedName is already in the array, then that means we added this jet previously, AND that its checkbox was just clicked on in the table (hence, why the jet values were passed into this function). We therefore need to remove the jet from the array through the filter method.
-      if (jet.name === passedName) {
-        setCheckedJetsArray(
-          checkedJetsArray.filter((jet) => jet.name !== passedName)
-        );
-        // TODO: I sometimes have to click the box twice to uncheck it, if I've pressed submit button on comparison form.
-        // TODO: When checking a box or boxes, clicking submit, then checking it again, nothing happens to said box. It doesn't become "checked" and state doesn't change. The only way to renable correct behavior is by refreshing page.
-      } else {
-        // If passedName is not in the array, that means the jet's checkbox was previously unchecked, so we create a new array containing the new jet object, via the spread operator, and set checkedJetsArray to the new array.
-        setCheckedJetsArray([
-          ...checkedJetsArray,
-          { name: passedName, year: year },
-        ]);
-      }
-    });
+  const handleCheckedJetRowChange = (
+    passedName: string,
+    year: string,
+    checked: boolean
+  ) => {
+    if (checked) {
+      // If the checkbox on the input for the jet passed into this function was checked (set to true), we add it to our checkedJetsArray.
+      setCheckedJetsArray([
+        ...checkedJetsArray,
+        { name: passedName, year: year },
+      ]);
+    } else {
+      // Otherwise, if the checkbox on the input for the jet passed into this function was unchecked (set to false), we remove that jet from our checkedJetsArray.
+      setCheckedJetsArray(
+        checkedJetsArray.filter((jet) => jet.name !== passedName)
+      );
+    }
   };
 
   //  Sets selected search term to be used in Gemini AI.
@@ -155,8 +155,9 @@ const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
         <input
           type="checkbox"
           className="w-5 h-5 accent-sky-600"
-          checked={checkedJetsArray.some((jet) => jet.name === row.name)}
-          onChange={() => handleCheckedJetRowChange(row.name, row.year)}
+          onChange={(e) =>
+            handleCheckedJetRowChange(row.name, row.year, e.target.checked)
+          }
         />
       </td>
       <td>{row.name}</td>
@@ -185,7 +186,7 @@ const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
       </table>
       {/* Selected Jets Comparison Form */}
       <form className="flex-col py-4">
-        <div className="pb-3">
+        <div className="pb-3 whitespace-nowrap">
           <label htmlFor="select-menu" className="pr-2">
             Ask Gemini AI to Compare Selected Jets By
           </label>
@@ -193,7 +194,7 @@ const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
             id="select-menu"
             value={selectedComparisonTerm}
             onChange={handleSearchTermChange}
-            className="p-2 bg-transparent border border-black rounded-md"
+            className="p-2 bg-transparent focus:outline-none border border-black rounded-md"
           >
             <option value="Top Speed">Top Speed</option>
             <option value="Fuel Efficiency">Fuel Efficiency</option>

@@ -20,7 +20,7 @@ export const getComparisonDataFromGemini = async (
   // Initial Gemini prompt detailing instructions for answering questions pertaining to each jet passed into this function, and how to format answers.
   let prompt = `I'd like an answer to each numbered question below. For each question return your answer in this format: a JavaScript object with three camelCased properties. Wrap each property in double quotes. Do not include trailing commas on a property that comes last in an object.
   
-  - name: the jet name--without its year--provided in the query,
+  - name: the capitalized jet name--without its year--provided in the query,
   - an object called jetAttribute, with a property inside it called ${searchTerm}, in camelCase. This property should have a value of the numerical value that you've provided for ${searchTerm},
   - A property called units with the ${searchTerm}'s units as the value of that property. The units value for maximum seats is always seats.
   

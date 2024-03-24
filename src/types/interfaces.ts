@@ -1,3 +1,9 @@
+export interface Heading {
+  title: string;
+  fontSize: string;
+  alignment: string;
+}
+
 export interface Jet {
   id: string;
   name: string;
@@ -23,10 +29,4 @@ export interface GeminiAnswer {
     maximumSeats?: number;
   };
   units: string;
-}
-
-export interface Heading {
-  title: string;
-  fontSize: string;
-  alignment: string;
 }
