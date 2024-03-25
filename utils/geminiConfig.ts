@@ -1,3 +1,4 @@
+// [Google Gemini AI API](https://ai.google.dev/?gad_source=1&gclid=CjwKCAjwnv-vBhBdEiwABCYQA37TX9Um_QlzdGj1ui0bhhIVURwZrsFOsOUCRvNZlzLpwPgLzrp6zhoCQtsQAvD_BwE)
 // node --version # Should be >= 18
 // npm install @google/generative-ai
 
