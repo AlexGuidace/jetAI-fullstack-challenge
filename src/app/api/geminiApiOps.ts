@@ -38,18 +38,15 @@ export const getComparisonDataFromGemini = async (
         prompt += `${jetIteration}. ${topSpeedQuery} \n\n`;
         break;
       case 'fuel efficiency':
-        // TODO: Gemini is giving me wildly different values on each request for "fuel efficieny" based on this prompt.
-        const fuelEfficiencyQuery = `What is the ${searchTerm} in nm/gal units for a ${jet.name} manufactured in ${jet.year}, that has a typical cruise speed of 450 knots and full payload, based on ${jet.name} documentation?`;
+        const fuelEfficiencyQuery = `Calculate the ${searchTerm} for a ${jet.name} manufactured in ${jet.year}. Get the data for the calculation from ${jet.name}'s official documentation. Make this calculation using the formula: ${jet.name}'s range (in nautical miles) divided by ${jet.name}'s fuel capacity (in gallons). The calculation's results should be in nm/gal. The calculation should be rounded to the nearest hundredth decimal place.`;
 
         prompt += `${jetIteration}. ${fuelEfficiencyQuery} \n\n`;
         break;
       case 'maximum seats':
-        // TODO: Gemini is giving me different values (off by one seat) based on this prompt.
         const maxSeatsQuery = `What are the ${searchTerm} on a ${jet.name} manufactured in ${jet.year}, as provided by the ${jet.name} website?`;
 
         prompt += `${jetIteration}. ${maxSeatsQuery} \n\n`;
       default:
-        // TODO: This is triggered when the unchecking-but-check-still-remains issue occurs in the Jets Table.
         console.log(
           'Something went wrong while concatenating queries to original Gemini prompt.'
         );
@@ -63,9 +60,6 @@ export const getComparisonDataFromGemini = async (
   try {
     const results = await model.generateContent(prompt);
     const geminiAnswersText = results.response.text();
-    console.log(
-      `GEMINI TEXT............................: \n\n ${geminiAnswersText}`
-    );
 
     //  Parse the returned string response into an actual array.
     const geminiAnswersArray: GeminiAnswer[] = JSON.parse(geminiAnswersText);
