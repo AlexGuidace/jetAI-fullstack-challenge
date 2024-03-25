@@ -40,6 +40,6 @@ Be sure to install these packages through NPM:
 
 - After addressing the previous two bullet points, you can start the application with **npm run dev**.
 
-- The app has been manually tested successfully in the United State's [most popular browsers](https://www.similarweb.com/browsers/united-states/): Chrome and Safari. It was also tested successfully in the less popular browser, Edge.
+- The app has been manually tested in the United State's [most popular browsers](https://www.similarweb.com/browsers/united-states/): Chrome and Safari. It was also manually tested in the less popular browsers, Edge and Firefox.
 
 - I initially tried to use the [OpenAI API](https://openai.com/blog/openai-api) instead of the Gemini API, but its prompt functionality was unfortunately blocked behind a $5 paywall.
