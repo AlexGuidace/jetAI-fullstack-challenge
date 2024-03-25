@@ -7,7 +7,7 @@ export interface Heading {
 export interface Jet {
   id: string;
   name: string;
-  wingspan: string;
+  wingspan: number;
   engines: string;
   year: string;
 }

@@ -13,7 +13,7 @@ datasource db {
 model Jet {
    id String @id @default(uuid())
    name String
-   wingspan String
+   wingspan Decimal
    engines String
    year String
    createdAt DateTime @default(now())

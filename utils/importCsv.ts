@@ -5,7 +5,7 @@ const csvParser = require('csv-parser');
 // Create interface to ensure objects being created in the DB adhere to the Jet Prisma model.
 interface Jet {
   name: string;
-  wingspan: string;
+  wingspan: number;
   engines: string;
   year: string;
 }
