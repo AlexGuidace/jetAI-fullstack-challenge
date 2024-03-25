@@ -26,7 +26,7 @@ Be sure to install these packages through NPM:
 
 <span style="color:green;">&#10004;</span> [csv-parser 3.0.0](https://www.npmjs.com/package/csv-parser) for use in importCsv.ts
 
-<span style="color:green;">&#10004;</span> Use the following command to use the Gemini API: **npm install @google/generative-ai**. And get your Gemini API key [here](https://ai.google.dev/?gad_source=1&gclid=CjwKCAjwnv-vBhBdEiwABCYQA46wIsFZrcjCppvZXV0d0zP2d9bZ9C5PJLagcWNsNQCfHNhzLG0ioBoCGPkQAvD_BwE).
+<span style="color:green;">&#10004;</span> Use the following command to use the Gemini API: **npm install @google/generative-ai**. And get your Gemini API key [here](https://ai.google.dev/?gad_source=1&gclid=CjwKCAjwnv-vBhBdEiwABCYQA46wIsFZrcjCppvZXV0d0zP2d9bZ9C5PJLagcWNsNQCfHNhzLG0ioBoCGPkQAvD_BwE)
 
 <span style="color:green;">&#10004;</span> Install [Font Awesome](https://fontawesome.com/): **npm install @fortawesome/fontawesome-free**
 
