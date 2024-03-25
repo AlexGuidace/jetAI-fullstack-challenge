@@ -207,7 +207,11 @@ const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
           type="submit"
           disabled={isLoading}
           onClick={handleComparisonFormSubmit}
-          className="bg-transparent p-2 hover:bg-sky-600 hover:border-sky-600 hover:text-white border border-black rounded-md"
+          className={`bg-transparent p-2 border border-black rounded-md ${
+            isLoading
+              ? 'opacity-50 cursor-not-allowed'
+              : 'hover:bg-sky-600 hover:border-sky-600 hover:text-white border'
+          }`}
         >
           <span>Compare Selected Jets</span>
         </button>
