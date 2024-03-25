@@ -1,3 +1,5 @@
+// A file that, on application start-up, imports CSV jet data and inserts it into the database.
+
 const { PrismaClient } = require('@prisma/client');
 const fs = require('fs');
 const csvParser = require('csv-parser');

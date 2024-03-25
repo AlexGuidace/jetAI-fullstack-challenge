@@ -1,3 +1,5 @@
+// The root page/landing page of the application.
+
 'use client';
 
 import { useRouter } from 'next/navigation';

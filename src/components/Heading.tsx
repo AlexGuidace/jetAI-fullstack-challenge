@@ -1,3 +1,7 @@
+// A reusable component for the headings in this application.
+
+'use client'
+
 import { Heading } from '../types/interfaces';
 
 const Heading: React.FC<Heading> = ({

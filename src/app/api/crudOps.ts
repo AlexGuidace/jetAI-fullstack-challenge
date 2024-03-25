@@ -1,3 +1,5 @@
+// A file for any database CRUD functionality.
+
 import prisma from '@/db';
 import { Jet } from '@/types/interfaces';
 

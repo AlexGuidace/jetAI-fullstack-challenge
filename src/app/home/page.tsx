@@ -1,3 +1,5 @@
+// The main page of the application.
+
 import { getJetsFromDb } from '../api/crudOps';
 import Heading from '@/components/Heading';
 import JetsDataUserInterface from '@/components/JetsDataUserInterface';

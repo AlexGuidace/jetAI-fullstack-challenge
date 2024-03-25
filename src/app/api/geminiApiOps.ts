@@ -1,3 +1,5 @@
+// A file that fetches information from Gemini and returns it.
+
 import genAI from '../../../utils/geminiConfig';
 import { JetNameAndYear } from '@/types/interfaces';
 import { GeminiAnswer } from '@/types/interfaces';

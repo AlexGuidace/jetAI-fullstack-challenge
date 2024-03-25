@@ -1,3 +1,5 @@
+// A table component that displays fetched Gemini API information regarding jets that a user wanted to compare.
+
 'use client';
 
 import '../app/globals.css';

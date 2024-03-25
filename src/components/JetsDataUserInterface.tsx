@@ -1,3 +1,5 @@
+// A component that contains the functionality related to user input and display of most of the UI.
+
 'use client';
 
 import { useState, ChangeEvent } from 'react';

@@ -28,7 +28,7 @@ Be sure to install these packages through NPM:
 
 <span style="color:green;">&#10004;</span> Use the following command to use the Gemini API: **npm install @google/generative-ai**. And get your Gemini API key [here](https://ai.google.dev/?gad_source=1&gclid=CjwKCAjwnv-vBhBdEiwABCYQA46wIsFZrcjCppvZXV0d0zP2d9bZ9C5PJLagcWNsNQCfHNhzLG0ioBoCGPkQAvD_BwE).
 
-<span style="color:green;">&#10004;</span> Install [Font Awesome](https://fontawesome.com/): **npm install @fortawesome/fontawesome-fre**e
+<span style="color:green;">&#10004;</span> Install [Font Awesome](https://fontawesome.com/): **npm install @fortawesome/fontawesome-free**
 
 ## Other Important Notes:
 
@@ -39,5 +39,7 @@ Be sure to install these packages through NPM:
 **"dev": "tsc utils/importCsv.ts && node utils/importCsv.js && next dev",**
 
 - After addressing the previous two bullet points, you can start the application with **npm run dev**.
+
+- The app has been manually tested successfully in the United State's [most popular browsers](https://www.similarweb.com/browsers/united-states/): Chrome and Safari. It was also tested successfully in the less popular browsers, Edge and Firefox.
 
 - I initially tried to use the [OpenAI API](https://openai.com/blog/openai-api) instead of the Gemini API, but its prompt functionality was unfortunately blocked behind a $5 paywall.

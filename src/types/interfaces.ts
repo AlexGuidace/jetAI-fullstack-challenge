@@ -1,3 +1,5 @@
+// A file containing interfaces used in the application.
+
 export interface Heading {
   title: string;
   fontSize: string;
