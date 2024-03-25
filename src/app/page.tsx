@@ -1,28 +1,29 @@
-import { getJetsFromDb } from './api/crudOps';
-import Heading from '@/components/Heading';
-import JetsDataUserInterface from '@/components/JetsDataUserInterface';
+'use client';
 
-const Homepage = async (): Promise<JSX.Element> => {
-  // Get all jets from DB and pass them to the JetsTable.
-  const jets = await getJetsFromDb();
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+
+const LandingPage = (): JSX.Element => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      router.push('/home');
+    }, 3000);
+
+    return () => clearTimeout(timeoutId);
+  }, [router]);
 
   return (
     <>
-      <Heading
-        title="AI-Powered Jet Comparison Tool"
-        fontSize="text-3xl"
-        alignment="text-center"
-      />
-      <div className="px-10 mx-auto">
-        <Heading
-          title="Top 10 Charter Jets"
-          fontSize="text-xl"
-          alignment="text-left"
-        />
-        <JetsDataUserInterface jets={jets} />
+      <div className="flex items-center justify-center h-screen w-screen">
+        <span className="inline-block rounded-full font-bold italic p-14 text-6xl bg-sky-600 text-white animate-pulse">
+          JET.AI
+          <i className="fa-solid fa-plane fa-2xl pl-10"></i>
+        </span>
       </div>
     </>
   );
 };
 
-export default Homepage;
+export default LandingPage;
