@@ -2,6 +2,8 @@
 
 This is a basic full-stack application utilizing AI to help a user make charter jet comparisons. It is built with TypeScript, React, Next.js, Node.js, SQLite, and Tailwind CSS.
 
+![Image of entire jet comparison app.](public/jet-comparison-app-image.png)
+
 ## Overview:
 
 On app start-up, a user is taken to a landing page before being redirected to the home page (where the main functionality of the app resides). A database is seeded with a CSV file containing charter jet data. A table with checkboxes is then populated with this jet data in the UI.
