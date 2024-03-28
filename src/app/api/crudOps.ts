@@ -1,7 +1,7 @@
 // A file for any database CRUD functionality.
 
 import prisma from '@/db';
-import { Jet } from '@/types/interfaces';
+import type { Jet } from '@/types/interfaces';
 
 // Get all jet data from the DB Jet table.
 export const getJetsFromDb = async (): Promise<Jet[]> => {

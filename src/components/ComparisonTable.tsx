@@ -3,7 +3,7 @@
 'use client';
 
 import '../app/globals.css';
-import { GeminiAnswer } from '@/types/interfaces';
+import type { GeminiAnswer } from '@/types/interfaces';
 import Heading from './Heading';
 
 const ComparisonTable: React.FC<{ geminiAnswersArray: GeminiAnswer[] }> = ({

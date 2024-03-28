@@ -1,8 +1,8 @@
 // A file that fetches information from Gemini and returns it.
 
 import genAI from '../../../utils/geminiConfig';
-import { JetNameAndYear } from '@/types/interfaces';
-import { GeminiAnswer } from '@/types/interfaces';
+import type { JetNameAndYear } from '@/types/interfaces';
+import type { GeminiAnswer } from '@/types/interfaces';
 
 const MODEL_NAME = 'gemini-1.0-pro';
 const model = genAI.getGenerativeModel({ model: MODEL_NAME });

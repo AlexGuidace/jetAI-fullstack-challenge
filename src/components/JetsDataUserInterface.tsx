@@ -6,9 +6,9 @@ import { useState, ChangeEvent } from 'react';
 import '../app/globals.css';
 import ComparisonTable from './ComparisonTable';
 import { getComparisonDataFromGemini } from '@/app/api/geminiApiOps';
-import { Jets } from '@/types/interfaces';
-import { JetNameAndYear } from '@/types/interfaces';
-import { GeminiAnswer } from '@/types/interfaces';
+import type { Jets } from '@/types/interfaces';
+import type { JetNameAndYear } from '@/types/interfaces';
+import type { GeminiAnswer } from '@/types/interfaces';
 
 const JetsDataUserInterface: React.FC<Jets> = ({ jets }) => {
   const [checkedJetsArray, setCheckedJetsArray] = useState<JetNameAndYear[]>([

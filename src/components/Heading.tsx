@@ -1,6 +1,6 @@
 // A reusable component for the headings in this application.
 
-'use client'
+'use client';
 
 import type { Heading } from '../types/interfaces';
 
