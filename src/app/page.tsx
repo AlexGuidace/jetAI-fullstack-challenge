@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 const LandingPage = (): JSX.Element => {
   const router = useRouter();
 
+  // Redirect user to homepage after three seconds on this page.
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       router.push('/home');
