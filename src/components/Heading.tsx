@@ -2,7 +2,7 @@
 
 'use client'
 
-import { Heading } from '../types/interfaces';
+import type { Heading } from '../types/interfaces';
 
 const Heading: React.FC<Heading> = ({
   title,
