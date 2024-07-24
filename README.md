@@ -8,7 +8,7 @@ This is a basic full-stack application utilizing AI to help a user make charter 
 
 On app start-up, a user is taken to a landing page before being redirected to the home page (where the main functionality of the app resides). A database is seeded with a CSV file containing charter jet data. A table with checkboxes is then populated with this jet data in the UI.
 
-A user of the application can compare the jets in the table against each other by checking the checkboxes of jets they are interested in, and then selecting attributes to compare them by. This user clicks a submit button, and after a period of processing (with loading indicator displayed), ranked jet comparison results are displayed to them in a comparison table.
+A user of the application can compare the jets in the table against each other by checking the checkboxes of jets they are interested in, and then selecting attributes to compare them by. This user clicks a submit button, and after a period of processing (with loading indicator shown), ranked jet comparison results are displayed to them in a comparison table.
 
 The comparison is done on the backend through the "Freeform prompt" [API](https://ai.google.dev/?gad_source=1&gclid=CjwKCAjwnv-vBhBdEiwABCYQA37TX9Um_QlzdGj1ui0bhhIVURwZrsFOsOUCRvNZlzLpwPgLzrp6zhoCQtsQAvD_BwE) provided by [Gemini](https://gemini.google.com/?utm_source=google&utm_medium=cpc&utm_campaign=2024enUS_gemfeb&gad_source=1&gclid=CjwKCAjwnv-vBhBdEiwABCYQA1K96J4mnvyDKDLXjCEZoWoIkt0G6oYMO0NymXPTtM-o5WzSm5nv6RoCbBQQAvD_BwE) (Google's largest LLM AI model).
 
